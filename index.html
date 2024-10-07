@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5e6cc;
+            text-align: center;
+            padding: 20px;
+        }
+        .card {
+            background-color: #ffcc99;
+            border: 2px solid #ffa500;
+            padding: 20px;
+            border-radius: 15px;
+            width: 400px;
+            margin: 50px auto;
+        }
+        .login-form {
+            display: none;
+        }
+        .video-container {
+            display: none;
+        }
+        .login-card {
+            background-color: #ffb366;
+            border: 2px solid #e59400;
+            padding: 20px;
+            border-radius: 15px;
+            width: 400px;
+            margin: 50px auto;
+        }
+        input[type="text"], input[type="password"] {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #ff8000;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #ff8000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #cc6600;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .card, .login-card {
+                margin: 30px auto;
+                width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .card, .login-card {
+                margin: 20px auto;
+                padding: 15px;
+            }
+            h2 {
+                font-size: 1.5em;
+            }
+            input[type="text"], input[type="password"] {
+                font-size: 14px;
+            }
+            input[type="submit"] {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-card">
+    <h2>Login to View the Birthday Surprise!</h2>
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Enter your first name"><br>
+        <input type="password" id="password" placeholder="Enter your birthday month"><br>
+        <input type="submit" value="Login">
+    </form>
+    <p id="errorMessage" class="error"></p>
+</div>
+
+<div class="card video-container" id="videoCard">
+    <h2>Happy Birthday Sarthak 🎉🎂</h2>
+    <video width="400" height="350" controls>
+        <source src="sarthak.mp4" type="video/mp4">
+        
+    </video>
+    <p>Hope you have a fantastic year ahead!</p>
+</div>
+
+<script>
+    const loginForm = document.getElementById('loginForm');
+    const videoCard = document.getElementById('videoCard');
+    const errorMessage = document.getElementById('errorMessage');
+
+    loginForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if (username === 'sarthak' && password === 'october') {
+            document.querySelector('.login-card').style.display = 'none';
+            videoCard.style.display = 'block';
+        } else {
+            errorMessage.textContent = "Please write the proper birthdate.";
+        }
+    });
+</script>
+
+</body>
+</html>
