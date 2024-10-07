@@ -3,45 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Card</title>
+    
+    <title>Sarthak's Birthday </title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5e6cc;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #FFDEE9 0%, #B5FFFC 100%);
             text-align: center;
             padding: 20px;
         }
-        .card {
-            background-color: #ffcc99;
-            border: 2px solid #ffa500;
+        .card, .login-card {
+            background-color: #ffe4e1;
+            border: 4px solid #ff69b4;
             padding: 20px;
             border-radius: 15px;
-            width: 400px;
+            width: 100%;
+            max-width: 400px;
             margin: 50px auto;
+            box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            position: relative;
         }
-        .login-form {
-            display: none;
-        }
-        .video-container {
+        .login-form, .video-container {
             display: none;
         }
         .login-card {
-            background-color: #ffb366;
-            border: 2px solid #e59400;
-            padding: 20px;
-            border-radius: 15px;
-            width: 400px;
-            margin: 50px auto;
+            background-color: #ffcccb;
+            border: 4px solid #ff1493;
         }
         input[type="text"], input[type="password"] {
-            width: 80%;
+            width: 100%;
             padding: 10px;
             margin: 10px 0;
-            border: 2px solid #ff8000;
+            border: 2px solid #ff69b4;
             border-radius: 5px;
+            box-sizing: border-box;
         }
         input[type="submit"] {
-            background-color: #ff8000;
+            background-color: #ff1493;
             color: white;
             padding: 10px 20px;
             border: none;
@@ -49,13 +48,35 @@
             cursor: pointer;
         }
         input[type="submit"]:hover {
-            background-color: #cc6600;
+            background-color: #ff69b4;
         }
         .error {
             color: red;
             font-size: 14px;
         }
-        
+        video {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 10px auto;
+        }
+        /* Party theme decorations */
+        .card::before, .login-card::before {
+            content: '🎉';
+            font-size: 30px;
+            position: absolute;
+            top: -20px;
+            left: -20px;
+        }
+        .card::after, .login-card::after {
+            content: '🎈';
+            font-size: 30px;
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+        }
+        /* Center video container on mobile */
         @media (max-width: 768px) {
             body {
                 padding: 10px;
@@ -64,8 +85,13 @@
                 margin: 30px auto;
                 width: 90%;
             }
+            .video-container {
+                text-align: center;
+            }
+            video {
+                width: 90%; /* Smaller width for mobile */
+            }
         }
-
         @media (max-width: 480px) {
             .card, .login-card {
                 margin: 20px auto;
@@ -80,16 +106,25 @@
             input[type="submit"] {
                 font-size: 16px;
             }
+            .video-container {
+                text-align: center;
+                margin: 0 auto;
+            }
+            video {
+                width: 100%; /* Full width for mobile */
+                margin: 0 auto;
+            }
         }
     </style>
+    <link rel="shortcut icon" href="download (1).png" type="image/x-icon">
 </head>
 <body>
 
 <div class="login-card">
     <h2>Login to View the Birthday Surprise!</h2>
     <form id="loginForm">
-        <input type="text" id="username" placeholder="Enter your first name"><br>
-        <input type="password" id="password" placeholder="Enter your birthday month"><br>
+        <input type="text" id="username" placeholder="Enter your firstname in lowercase"><br>
+        <input type="password" id="password" placeholder="Enter your birthday month in lowercase"><br>
         <input type="submit" value="Login">
     </form>
     <p id="errorMessage" class="error"></p>
@@ -97,9 +132,9 @@
 
 <div class="card video-container" id="videoCard">
     <h2>Happy Birthday Sarthak 🎉🎂</h2>
-    <video width="400" height="350" controls>
+    <video controls width="250px" height="350px">
         <source src="sarthak.mp4" type="video/mp4">
-        
+       
     </video>
     <p>Hope you have a fantastic year ahead!</p>
 </div>
